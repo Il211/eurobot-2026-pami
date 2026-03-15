@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "FastAccelStepper.h">
 #include <TMCStepper.h>
 #include <ESP32Servo.h>
 
