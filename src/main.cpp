@@ -5,6 +5,8 @@
 #include <esp_now.h>
 #include <esp_wifi.h>
 
+
+
 // =====================
 // PINS
 // =====================
@@ -19,6 +21,8 @@
 #define US_TRIG_PIN 12
 #define US_ECHO_PIN 11
 #define SERVO_PIN D10
+
+#define PAMI 4
 
 // =====================
 // PARAMS
@@ -235,19 +239,93 @@ while (motorLeft->isRunning() || motorRight->isRunning()) {
 // TRAJECTOIRES
 // =====================
 void runYellowPath() {
-  safeMove(16000, -16000);
-  safeMove(700, 700);
-  safeMove(9000, -9000);
-  safeMove(-700, -700);
-  safeMove(2000, -2000);
+  if (PAMI == 1) {
+    delay(5000);
+    safeMove(10000, -10000);   // avancer
+  }
+
+  if (PAMI == 2) {
+    safeMove(9500, -9500);   // avancer
+    safeMove(700, 700);  // tourner G
+    safeMove(1000, -1000);
+    safeMove(-700, -700);
+    safeMove(7000, -7000);
+    safeMove(700, 700);
+    safeMove(4000, -4000);
+    safeMove(-700, -700);
+    safeMove(1000, -1000);  
+  }
+
+  if (PAMI == 3) {
+    delay(5000);
+    safeMove(9500, -9500);   // avancer
+    safeMove(700, 700);  // tourner G
+    safeMove(5000, -5000);
+    safeMove(-700, -700);
+    safeMove(900, -900);
+    
+
+  }
+  if (PAMI == 4) {
+    delay(3000);
+    safeMove(9500, -9500);   // avancer
+    safeMove(700, 700);  // tourner G
+    safeMove(11000, -11000);
+    safeMove(-700, -700);
+    safeMove(1500, -1500);   
+
+  }
+  if (PAMI == 5) {
+    safeMove(16000, -16000);
+    safeMove(700, 700);
+    safeMove(9000, -9000);
+    safeMove(-700, -700);
+    safeMove(2000, -2000); 
+  } 
 }
 
 void runBluePath() {
-  safeMove(16000, -16000);
-  safeMove(-700, -700);
-  safeMove(10000, -10000);
-  safeMove(700, 700);
-  safeMove(2000, -2000);
+  if (PAMI == 1) {
+    delay(5000);
+    safeMove(10000, -10000);   // avancer
+  }
+
+  if (PAMI == 2) {
+    safeMove(9500, -9500);   // avancer
+    safeMove(-700, -700);  // tourner G
+    safeMove(1000, -1000);
+    safeMove(700, 700);
+    safeMove(7000, -7000);
+    safeMove(-700, -700);
+    safeMove(4000, -4000);
+    safeMove(700, 700);
+    safeMove(1000, -1000);   
+  }
+  
+  if (PAMI == 3) {
+    delay(5000);
+    safeMove(9500, -9500);   // avancer
+    safeMove(-700, -700);  // tourner D
+    safeMove(5000, -5000);
+    safeMove(700, 700);
+    safeMove(900, -900);  
+  }
+  if (PAMI == 4) {
+    delay(3000);
+    safeMove(9500, -9500);   // avancer
+    safeMove(-700, -700);  // tourner D
+    safeMove(11000, -11000);
+    safeMove(700, 700);
+    safeMove(1000, -1000);
+  }
+
+  if (PAMI == 5) {
+    safeMove(16000, -16000);
+    safeMove(700, 700);
+    safeMove(9000, -9000);
+    safeMove(-700, -700);
+    safeMove(2000, -2000);
+  }
 }
 
 // =====================
